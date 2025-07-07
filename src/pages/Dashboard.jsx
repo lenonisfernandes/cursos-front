@@ -91,21 +91,25 @@ export default function Dashboard() {
       {cursos.length === 0 && !buscando && <p>Nenhum curso disponível no momento.</p>}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
         {cursos.map(curso => (
-          <div key={curso.id} style={{ border: "1px solid #ccc", borderRadius: 8, padding: 16, width: 300, transition: 'opacity 0.2s' }}>
+          <div key={curso.id} className="card" style={{ width: 320, minHeight: 340, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             {curso.capa && (
-              <img src={curso.capa} alt={curso.nome} style={{ width: "100%", height: 120, objectFit: "cover", borderRadius: 4 }} />
+              <img src={curso.capa} alt={curso.nome} style={{ width: "100%", height: 140, objectFit: "cover", borderRadius: 8, marginBottom: 16, border: '1px solid var(--color-border)' }} />
             )}
-            <h3>{curso.nome}</h3>
-            <p>{curso.descricao}</p>
-            <p><b>Início:</b> {curso.inicio}</p>
-            <p><b>Inscritos:</b> {curso.inscricoes}</p>
-            {curso.inscrito ? (
-              <p style={{ color: 'blue' }}>Você já está inscrito</p>
-            ) : (
-              <button onClick={() => inscrever(curso.id)} disabled={inscrevendo === curso.id}>
-                {inscrevendo === curso.id ? 'Inscrevendo...' : 'Inscrever-se'}
-              </button>
-            )}
+            <div style={{ flex: 1 }}>
+              <h3 style={{ fontSize: 22, margin: '0 0 8px 0', color: 'var(--color-primary)' }}>{curso.nome}</h3>
+              <p style={{ color: 'var(--color-text-secondary)', margin: '0 0 12px 0', fontSize: 15 }}>{curso.descricao}</p>
+              <p style={{ fontSize: 14, margin: '0 0 6px 0' }}><b>Início:</b> {curso.inicio}</p>
+              <p style={{ fontSize: 14, margin: 0 }}><b>Inscritos:</b> {curso.inscricoes}</p>
+            </div>
+            <div style={{ marginTop: 18 }}>
+              {curso.inscrito ? (
+                <p style={{ color: 'var(--color-success)', fontWeight: 600, margin: 0 }}>Você já está inscrito</p>
+              ) : (
+                <button onClick={() => inscrever(curso.id)} disabled={inscrevendo === curso.id} style={{ width: '100%', fontSize: 16 }}>
+                  {inscrevendo === curso.id ? 'Inscrevendo...' : 'Inscrever-se'}
+                </button>
+              )}
+            </div>
           </div>
         ))}
       </div>

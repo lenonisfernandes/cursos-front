@@ -52,9 +52,9 @@ export default function Login() {
   }
 
   return (
-    <div style={{ maxWidth: 400, margin: "40px auto" }}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+    <div style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <form onSubmit={handleSubmit} className="card" style={{ maxWidth: 400, width: '100%', margin: '40px auto', background: 'var(--color-bg-card)', boxShadow: '0 2px 12px rgba(0,0,0,0.18)' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: 24, color: 'var(--color-primary)' }}>Login</h2>
         <div>
           <label>Email:</label>
           <input name="email" type="email" value={form.email} onChange={handleChange} required />
@@ -63,12 +63,12 @@ export default function Login() {
           <label>Senha:</label>
           <input name="senha" type="password" value={form.senha} onChange={handleChange} required />
         </div>
-        <button type="submit" style={{ marginTop: 16 }} disabled={carregando}>
+        <button type="submit" style={{ width: '100%', fontSize: 16 }} disabled={carregando}>
           {carregando ? "Entrando..." : "Entrar"}
         </button>
+        {mensagem && <p className="success" style={{ textAlign: 'center', marginTop: 18 }}>{mensagem}</p>}
+        {erro && <p className="error" style={{ textAlign: 'center', marginTop: 18 }}>{erro}</p>}
       </form>
-      {mensagem && <p style={{ color: "green" }}>{mensagem}</p>}
-      {erro && <p style={{ color: "red" }}>{erro}</p>}
     </div>
   );
 } 

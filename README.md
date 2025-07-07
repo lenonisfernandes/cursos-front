@@ -1,12 +1,28 @@
-# React + Vite
+# Plataforma de Cursos - Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o front-end em React para a Plataforma de Cursos, que consome a API de cursos e permite ao usuário se cadastrar, fazer login, visualizar cursos, se inscrever, cancelar inscrição e gerenciar suas inscrições.
 
-Currently, two official plugins are available:
+## Tecnologias e Linguagens Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **JavaScript (ES6+)** — Linguagem principal do projeto, com sintaxe moderna.
+- **React** — Biblioteca para construção de interfaces de usuário reativas e componentizadas.
+- **Vite** — Ferramenta de build e desenvolvimento rápido para projetos front-end modernos.
+- **Axios** — Cliente HTTP para consumo dos endpoints da API.
+- **React Router DOM** — Gerenciamento de rotas e navegação SPA.
+- **CSS** — Estilização dos componentes e páginas.
 
-## Expanding the ESLint configuration
+## Observações
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- O front depende de um backend compatível (veja os endpoints esperados no início deste README).
+- O JWT é decodificado manualmente no front para obter o id do usuário.
+- O cookie JWT é usado para autenticação nas requisições protegidas.
+
+## Endpoints esperados
+
+- `POST /usuarios` — Cadastro de usuário
+- `POST /login` — Login (retorna JWT no corpo e no cookie)
+- `GET /cursos?filtro=` — Listagem de cursos (com filtro)
+- `POST /cursos/:idCurso` — Inscrição em curso
+- `PATCH /cursos/:idCurso` — Cancelamento de inscrição
+- `GET /:idUsuario` — Listar cursos inscritos do usuário
+
